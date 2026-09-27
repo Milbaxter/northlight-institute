@@ -8,7 +8,7 @@ Discord → OpenClaw on an UpCloud Ubuntu server → configured AI provider and 
 
 The service uses the official OpenClaw 2026.9.6 container. It runs as an unprivileged user, has persistent private state, and restarts automatically. The dashboard is published only on the server's loopback interface. At the owner's request, Stearin has full host administrator access through a dedicated SSH key and the `northlight-server` command. The container boundary therefore does not isolate the host from agent actions.
 
-This repository contains public configuration templates and agent instructions. Live secrets, chats, memory, and model credentials stay outside it. The initial project is agent infrastructure; no institute website has been built or published yet.
+This repository contains public configuration templates, agent instructions, and a small static institute website in `site/`. Live secrets, chats, memory, and model credentials stay outside it.
 
 ## Server layout
 
@@ -73,6 +73,8 @@ Use `docker compose exec gateway node dist/index.js …` for CLI commands agains
 For updates, deliberately choose a release tag, review its release notes, and update `compose.yaml`. A restart alone does not fetch a newer image. Keep deployment changes under operator control.
 
 ## Repository and website work
+
+The static website lives in `site/`. Nginx serves its HTML, CSS, and favicon from `/srv/northlight/sites/northlight` on port 80 using `site/nginx.conf`. There is no form, analytics, or application backend. Until a domain and TLS are configured, the public address is HTTP on the server IP.
 
 The agent's SSH deploy key should grant write access to this repository only. It can make commits and push code here. That key does not grant access to other repositories or hosting providers, and it does not authorize GitHub API operations such as opening pull requests. Add a repository-scoped GitHub App/token if those operations are needed.
 
