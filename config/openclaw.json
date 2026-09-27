@@ -35,6 +35,11 @@
   },
   "messages": {
     "visibleReplies": "automatic",
+    "queue": {
+      "byChannel": {
+        "discord": "followup"
+      }
+    },
     "groupChat": {
       "visibleReplies": "automatic",
       "mentionPatterns": ["<@&1553819638951845952>", "@Stearin\\b"]
@@ -58,6 +63,7 @@
       "groupPolicy": "allowlist",
       "dmPolicy": "disabled",
       "configWrites": false,
+      "replyToMode": "all",
       "streaming": {
         "mode": "progress",
         "progress": {
