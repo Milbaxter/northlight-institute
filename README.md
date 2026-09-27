@@ -82,6 +82,10 @@ All allowed Discord members can request work using this administrator access. To
 
 ## References
 
+- [SOUL.md personality guidance](https://docs.openclaw.ai/concepts/soul)
+- [Workspace operating template](https://docs.openclaw.ai/reference/templates/AGENTS)
+- [Identity fields](https://docs.openclaw.ai/reference/templates/IDENTITY)
+- [Workspace and memory layout](https://docs.openclaw.ai/concepts/agent-workspace)
 - [Official Docker setup](https://docs.openclaw.ai/install/docker)
 - [Discord setup](https://docs.openclaw.ai/channels/discord/setup)
 - [Discord access control](https://docs.openclaw.ai/channels/discord/access-control)
