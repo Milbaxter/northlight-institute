@@ -1,0 +1,19 @@
+[Unit]
+Description=Northlight email subscription collector
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=northlight-signups
+StateDirectoryMode=0700
+Environment=NORTHLIGHT_SIGNUPS_DB=/var/lib/northlight-signups/subscribers.sqlite3
+Environment=NORTHLIGHT_PUBLIC_ORIGIN=https://80.47.227.4
+ExecStart=/usr/bin/python3 /opt/northlight-signups/signup.py
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

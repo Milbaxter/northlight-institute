@@ -1,0 +1,6 @@
+[Unit]
+Description=Renew Northlight HTTPS certificate
+
+[Service]
+Type=oneshot
+ExecStart=/opt/northlight-certbot/bin/certbot renew --quiet --no-random-sleep-on-renew --deploy-hook "/usr/bin/systemctl reload nginx"

@@ -74,7 +74,9 @@ For updates, deliberately choose a release tag, review its release notes, and up
 
 ## Repository and website work
 
-The static website lives in `site/`. Nginx serves its HTML and CSS from `/srv/northlight/sites/northlight` on port 80 using `site/nginx.conf`. There is no form, analytics, or application backend. Until a domain and TLS are configured, the public address is HTTP on the server IP.
+The static website lives in `site/`. Nginx serves its HTML and CSS from `/srv/northlight/sites/northlight` using `site/nginx.conf`. HTTP redirects to HTTPS at the server IP. TLS uses a short-lived Let's Encrypt IP certificate; Certbot 5.8 is installed in `/opt/northlight-certbot`, and the systemd timer in `site/deploy/` checks renewal daily and reloads nginx after a successful renewal. Keep the ACME challenge path available on port 80. A custom domain has not been connected.
+
+The site has no analytics. A dependency-free, private email collector lives in `site/server/`, with a service definition in `site/deploy/`. It runs on host loopback only and is not exposed or linked from the website until a public privacy contact and subscription notice are settled. Subscriber data belongs in the service's private systemd state directory, never this repository or the web root. Run its focused checks with `python3 -m unittest discover -s site/server -p 'test_*.py'`.
 
 The agent's SSH deploy key should grant write access to this repository only. It can make commits and push code here. That key does not grant access to other repositories or hosting providers, and it does not authorize GitHub API operations such as opening pull requests. Add a repository-scoped GitHub App/token if those operations are needed.
 
