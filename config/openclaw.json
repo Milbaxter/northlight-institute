@@ -58,6 +58,15 @@
       "groupPolicy": "allowlist",
       "dmPolicy": "disabled",
       "configWrites": false,
+      "streaming": {
+        "mode": "progress",
+        "progress": {
+          "toolProgress": true,
+          "commentary": true,
+          "commandText": "status",
+          "maxLines": 6
+        }
+      },
       "guilds": {
         "981308596958658632": {
           "requireMention": true
