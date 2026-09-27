@@ -9,6 +9,11 @@
         "source": "env",
         "provider": "default",
         "id": "OPENCLAW_GATEWAY_TOKEN"
+      },
+      "rateLimit": {
+        "maxAttempts": 10,
+        "windowMs": 60000,
+        "lockoutMs": 300000
       }
     },
     "controlUi": {
@@ -35,6 +40,9 @@
     },
     "loopDetection": {
       "enabled": true
+    },
+    "fs": {
+      "workspaceOnly": true
     }
   },
   "channels": {
