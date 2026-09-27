@@ -1,0 +1,10 @@
+.env
+secrets.env
+state/
+auth/
+.runtime/
+*.pem
+*.key
+*ed25519*
+__pycache__/
+.DS_Store
