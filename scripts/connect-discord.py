@@ -55,11 +55,16 @@ def main():
     token = getpass.getpass('Discord bot token (hidden): ').strip()
     if not re.fullmatch(r'[A-Za-z0-9_.-]+', token):
         raise SystemExit('Invalid token format.')
-    guild_id = ask_id('Northlight server ID')
+    guild_id = '981308596958658632'
     bot = discord_get('/users/@me', token)
     if not bot.get('bot'):
         raise SystemExit('The token must belong to a bot application.')
-    guild = discord_get('/guilds/' + guild_id, token)
+    permissions = 1024 + 2048 + 65536 + 16384 + 32768 + 64 + 274877906944
+    invite = (f'https://discord.com/oauth2/authorize?client_id={bot["id"]}'
+              f'&permissions={permissions}&scope=bot%20applications.commands'
+              f'&guild_id={guild_id}&disable_guild_select=true')
+    print('Invite this bot to Northlight using this link:')
+    print(invite)
     config = json.loads(CONFIG.read_text())
     config.setdefault('channels', {})['discord'] = {
         'enabled': True,
@@ -77,11 +82,12 @@ def main():
     secret_lines.append('DISCORD_BOT_TOKEN=' + token)
     atomic_write(SECRETS, '\n'.join(secret_lines) + '\n')
     atomic_write(CONFIG, json.dumps(config, indent=2) + '\n', 1000, 1000)
-    subprocess.run(['docker', 'compose', 'run', '--rm', '--no-deps', 'gateway',
+    subprocess.run(['docker', 'compose', 'run', '-T', '--rm', '--no-deps', 'gateway',
                     'node', 'dist/index.js', 'config', 'validate'], cwd=DEPLOYMENT, check=True)
     subprocess.run(['docker', 'compose', 'up', '-d', '--force-recreate', 'gateway'],
                    cwd=DEPLOYMENT, check=True)
-    print(f"Configured {bot['username']} for all visible channels in {guild['name']}.")
+    print(f"Configured {bot['username']} for all visible channels in Northlight.")
+    print('Enable Message Content Intent in the Bot page, and complete the invite above.')
     print('Mention the bot after the AI account is connected; check channels status --probe.')
 
 
