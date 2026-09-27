@@ -33,6 +33,13 @@
       }
     }
   },
+  "messages": {
+    "visibleReplies": "automatic",
+    "groupChat": {
+      "visibleReplies": "automatic",
+      "mentionPatterns": ["<@&1553819638951845952>", "@Stearin\\b"]
+    }
+  },
   "tools": {
     "profile": "full",
     "elevated": {
