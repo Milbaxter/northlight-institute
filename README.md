@@ -43,7 +43,7 @@ docker compose exec gateway node dist/index.js models auth login --provider open
 docker compose exec gateway node dist/index.js models list --provider openai
 ```
 
-Complete the device authorization using your own ChatGPT account. Keep the credentials in the private agent store. The configured model is `openai/gpt-6-astra`; confirm that it is available after login. If it is unavailable, explicitly choose one from the account's model list. Subscription usage counts toward that account's limits.
+Complete the device authorization using your own ChatGPT account. Keep the credentials in the private agent store. The configured model is `openai/gpt-6-sol`; confirm that it is available after login. If it is unavailable, explicitly choose one from the account's model list. Subscription usage counts toward that account's limits.
 
 ## Discord setup
 

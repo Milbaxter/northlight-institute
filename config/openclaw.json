@@ -29,7 +29,7 @@
       "maxConcurrent": 1,
       "skipBootstrap": true,
       "model": {
-        "primary": "openai/gpt-6-astra"
+        "primary": "openai/gpt-6-sol"
       }
     }
   },
