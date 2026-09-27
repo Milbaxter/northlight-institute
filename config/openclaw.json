@@ -61,10 +61,12 @@
       "streaming": {
         "mode": "progress",
         "progress": {
-          "toolProgress": true,
-          "commentary": true,
+          "toolProgress": false,
+          "commentary": false,
+          "narration": false,
+          "label": false,
           "commandText": "status",
-          "maxLines": 6
+          "maxLines": 3
         }
       },
       "guilds": {
