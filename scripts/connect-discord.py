@@ -56,15 +56,10 @@ def main():
     if not re.fullmatch(r'[A-Za-z0-9_.-]+', token):
         raise SystemExit('Invalid token format.')
     guild_id = ask_id('Northlight server ID')
-    channel_id = ask_id('Working channel ID')
-    user_ids = list(dict.fromkeys([ask_id('Your user ID'), ask_id("Your friend's user ID")]))
     bot = discord_get('/users/@me', token)
     if not bot.get('bot'):
         raise SystemExit('The token must belong to a bot application.')
     guild = discord_get('/guilds/' + guild_id, token)
-    channel = discord_get('/channels/' + channel_id, token)
-    if channel.get('guild_id') != guild_id:
-        raise SystemExit('The selected channel does not belong to the selected server.')
     config = json.loads(CONFIG.read_text())
     config.setdefault('channels', {})['discord'] = {
         'enabled': True,
@@ -75,8 +70,6 @@ def main():
         'configWrites': False,
         'guilds': {guild_id: {
             'requireMention': True,
-            'users': user_ids,
-            'channels': {channel_id: {'enabled': True, 'requireMention': True}},
         }},
     }
     secret_lines = [line for line in SECRETS.read_text().splitlines()
@@ -88,7 +81,7 @@ def main():
                     'node', 'dist/index.js', 'config', 'validate'], cwd=DEPLOYMENT, check=True)
     subprocess.run(['docker', 'compose', 'up', '-d', '--force-recreate', 'gateway'],
                    cwd=DEPLOYMENT, check=True)
-    print(f"Configured {bot['username']} for {guild['name']} / {channel.get('name', channel_id)}.")
+    print(f"Configured {bot['username']} for all visible channels in {guild['name']}.")
     print('Mention the bot after the AI account is connected; check channels status --probe.')
 
 

@@ -33,26 +33,26 @@ Open `http://localhost:18789`. Retrieve the dashboard token privately from `/etc
 
 ## AI connection
 
-Choose a provider and complete OpenClaw's interactive setup from the server:
+The deployment is configured for a ChatGPT/Codex subscription, with no paid API fallback. Authorize the account on the server:
 
 ```sh
 cd /opt/northlight
-docker compose run --rm gateway node dist/index.js onboard --mode local --no-install-daemon
-docker compose up -d --force-recreate gateway
+docker compose exec gateway node dist/index.js models auth login --provider openai --device-code
+docker compose exec gateway node dist/index.js models list --provider openai
 ```
 
-Preserve the existing workspace, token authentication, and loopback-only Docker port mapping. Configure provider secrets privately, not in this repository. A running gateway without a configured model cannot answer or perform tasks.
+Complete the device authorization using your own ChatGPT account. Keep the credentials in the private agent store. The configured model is `openai/gpt-6-astra`; confirm that it is available after login. If it is unavailable, explicitly choose one from the account's model list. Subscription usage counts toward that account's limits.
 
 ## Discord setup
 
 1. In the [Discord Developer Portal](https://discord.com/developers/applications), create an application named **Northlight** and its bot.
 2. Enable **Message Content Intent**. Enable **Server Members Intent** for member resolution. Generate the bot token and keep it private.
 3. Invite it to **Northlight Institute of Mental Health** using `bot` and `applications.commands` scopes. Grant View Channels, Send Messages, Read Message History, Embed Links, Attach Files, and Send Messages in Threads if needed. Administrator permission is unnecessary.
-4. Enable Discord Developer Mode. Copy the server ID, working channel ID, and both founders' user IDs.
-5. On the server, run `sudo python3 /opt/northlight/scripts/connect-discord.py`. It validates the bot and target channel before enabling the channel, and prompts for the token without echoing it.
-6. Mention `@Northlight` in the selected channel. Ask it to describe the repository, then test a small requested edit and verify the result.
+4. Enable Discord Developer Mode. Copy the server ID.
+5. On the server, run `sudo python3 /opt/northlight/scripts/connect-discord.py`. It validates the bot and target server before enabling Discord, and prompts for the token without echoing it.
+6. Mention `@Northlight` in any channel it can see. Ask it to describe the repository, then test a small requested edit and verify the result.
 
-Only the configured server, channel and founders are allowed. DMs are disabled. Ordinary conversation does not trigger the bot; mention it for a task.
+The configured server is allowed in full: every member can tag the bot in any channel the bot can see. DMs are disabled. Ordinary conversation does not trigger the bot; mention it for a task. Discord channel permissions still control visibility, so grant the Northlight bot role access to any private channels where it should work.
 
 ## Operations
 
