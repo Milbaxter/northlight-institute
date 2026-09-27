@@ -6,7 +6,7 @@ Deployment and operating instructions for Stearin, the institute's shared OpenCl
 
 Discord → OpenClaw on an UpCloud Ubuntu server → configured AI provider and institute repository.
 
-The service uses the official OpenClaw 2026.9.6 container. It runs as an unprivileged user, has persistent private state, and restarts automatically. The dashboard is published only on the server's loopback interface. The container has no host Docker socket or host administrator credentials.
+The service uses the official OpenClaw 2026.9.6 container. It runs as an unprivileged user, has persistent private state, and restarts automatically. The dashboard is published only on the server's loopback interface. At the owner's request, Stearin has full host administrator access through a dedicated SSH key and the `northlight-server` command. The container boundary therefore does not isolate the host from agent actions.
 
 This repository contains public configuration templates and agent instructions. Live secrets, chats, memory, and model credentials stay outside it. The initial project is agent infrastructure; no institute website has been built or published yet.
 
@@ -20,6 +20,8 @@ This repository contains public configuration templates and agent instructions. 
 | `/srv/northlight/state/workspace/repo` | Agent's institute repository checkout |
 | `/srv/northlight/auth` | Private model authentication state |
 | `/srv/northlight/ssh` | Repository-specific deploy key |
+| `/srv/northlight/server-admin` | Private host administrator SSH key and pinned host key |
+| `/srv/northlight/sites` | Website deployments |
 
 ## Dashboard
 
@@ -74,7 +76,9 @@ For updates, deliberately choose a release tag, review its release notes, and up
 
 The agent's SSH deploy key should grant write access to this repository only. It can make commits and push code here. That key does not grant access to other repositories or hosting providers, and it does not authorize GitHub API operations such as opening pull requests. Add a repository-scoped GitHub App/token if those operations are needed.
 
-A website domain and hosting account must be selected and connected before the agent can deploy website changes. Source editing, tests, and publishing are separate steps; verify the published page before reporting a deployment as complete.
+Stearin can host websites directly on this UpCloud server, install packages, and manage Docker and systemd using `northlight-server 'COMMAND'`. A custom domain requires separately connecting its DNS. No other UpCloud server or cloud billing access is granted. Source editing, tests, and publishing are separate steps; verify the published page before reporting a deployment as complete.
+
+All allowed Discord members can request work using this administrator access. To revoke host access, remove the `northlight-stearin-server-admin` key from root's `authorized_keys`, remove the server-admin volume from Compose, and recreate the gateway. The administrator key is generated privately on the host and is never stored in this repository; a fresh deployment must provision it before enabling this mount.
 
 ## References
 

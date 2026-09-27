@@ -1,0 +1,11 @@
+#!/bin/sh
+# Execute a command as root on this deployment's host.
+set -eu
+exec ssh -F /dev/null \
+  -i /home/node/.config/northlight-server/id_ed25519 \
+  -o IdentitiesOnly=yes -o BatchMode=yes \
+  -o StrictHostKeyChecking=yes \
+  -o UserKnownHostsFile=/home/node/.config/northlight-server/known_hosts \
+  -o HostKeyAlias=northlight-host \
+  -o ConnectTimeout=15 \
+  root@northlight-host "$@"
