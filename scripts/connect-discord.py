@@ -59,6 +59,8 @@ def main():
     bot = discord_get('/users/@me', token)
     if not bot.get('bot'):
         raise SystemExit('The token must belong to a bot application.')
+    if bot['id'] != '1553818719359078500':
+        raise SystemExit('This token does not belong to the Stearin application.')
     permissions = 1024 + 2048 + 65536 + 16384 + 32768 + 64 + 274877906944
     invite = (f'https://discord.com/oauth2/authorize?client_id={bot["id"]}'
               f'&permissions={permissions}&scope=bot%20applications.commands'
