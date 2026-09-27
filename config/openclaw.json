@@ -26,7 +26,7 @@
   "agents": {
     "defaults": {
       "workspace": "/home/node/.openclaw/workspace",
-      "maxConcurrent": 1,
+      "maxConcurrent": 2,
       "skipBootstrap": true,
       "model": {
         "primary": "openai/gpt-6-sol"
