@@ -61,13 +61,14 @@ def main():
         raise SystemExit('The token must belong to a bot application.')
     if bot['id'] != '1553818719359078500':
         raise SystemExit('This token does not belong to the Stearin application.')
-    permissions = 1024 + 2048 + 65536 + 16384 + 32768 + 64 + 274877906944
+    permissions = 563327910661184
     invite = (f'https://discord.com/oauth2/authorize?client_id={bot["id"]}'
               f'&permissions={permissions}&scope=bot%20applications.commands'
               f'&guild_id={guild_id}&disable_guild_select=true')
     print('Invite this bot to Northlight using this link:')
     print(invite)
     config = json.loads(CONFIG.read_text())
+    config.setdefault('plugins', {}).setdefault('entries', {})['discord'] = {'enabled': True}
     config.setdefault('channels', {})['discord'] = {
         'enabled': True,
         'token': {'source': 'env', 'provider': 'default', 'id': 'DISCORD_BOT_TOKEN'},
