@@ -74,7 +74,7 @@ For updates, deliberately choose a release tag, review its release notes, and up
 
 ## Repository and website work
 
-The static website lives in `site/`. Nginx serves its HTML, CSS, and favicon from `/srv/northlight/sites/northlight` on port 80 using `site/nginx.conf`. There is no form, analytics, or application backend. Until a domain and TLS are configured, the public address is HTTP on the server IP.
+The static website lives in `site/`. Nginx serves its HTML and CSS from `/srv/northlight/sites/northlight` on port 80 using `site/nginx.conf`. There is no form, analytics, or application backend. Until a domain and TLS are configured, the public address is HTTP on the server IP.
 
 The agent's SSH deploy key should grant write access to this repository only. It can make commits and push code here. That key does not grant access to other repositories or hosting providers, and it does not authorize GitHub API operations such as opening pull requests. Add a repository-scoped GitHub App/token if those operations are needed.
 
