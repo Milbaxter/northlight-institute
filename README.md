@@ -1,5 +1,7 @@
 # Northlight Institute of Mental Health
 
+Current hosting (15 October 2026): **https://80.47.238.111** in the `maximilianlight` UpCloud account. The original gateway is stopped. Agent Room was excluded from the new deployment. The `northlight-server` helper targets this new host using its pinned SSH identity.
+
 Deployment and operating instructions for Stearin, the institute's shared OpenClaw assistant.
 
 ## Architecture

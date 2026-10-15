@@ -9,7 +9,7 @@ from urllib.parse import parse_qs
 
 
 DATABASE = os.environ.get("NORTHLIGHT_SIGNUPS_DB", "/var/lib/northlight-signups/subscribers.sqlite3")
-ORIGIN = os.environ.get("NORTHLIGHT_PUBLIC_ORIGIN", "https://80.47.227.4")
+ORIGIN = os.environ.get("NORTHLIGHT_PUBLIC_ORIGIN", "https://80.47.238.111")
 EMAIL_RE = re.compile(r"^[^\s@\x00-\x1f\x7f]+@[^\s@\x00-\x1f\x7f]+\.[^\s@\x00-\x1f\x7f]+$")
 
 
