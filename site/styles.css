@@ -41,7 +41,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: clamp(25px, 3.6vw, 40px);
+  font-size: clamp(27px, 4vw, 44px);
   line-height: 1.1;
   letter-spacing: -.045em;
   white-space: nowrap;
@@ -71,8 +71,7 @@ h1 {
 
 .hero h2 {
   max-width: 940px;
-  margin-top: 24px;
-  font-size: clamp(53px, 7.5vw, 102px);
+  font-size: clamp(49px, 6.3vw, 84px);
   line-height: 1.03;
   letter-spacing: -.055em;
   text-wrap: balance;
@@ -175,7 +174,7 @@ footer {
   .site-header { padding: 24px 0; }
   .header-mark { width: 8px; height: 8px; }
   .hero { padding: 82px 0 65px; }
-  .hero h2 { font-size: clamp(47px, 11vw, 72px); }
+  .hero h2 { font-size: clamp(42px, 8.5vw, 59px); }
   .northern-light { height: 330px; }
   .pillars { padding: 88px 0 100px; }
   .pillar-grid { grid-template-columns: 1fr; gap: 38px; margin-top: 43px; }
@@ -187,9 +186,7 @@ footer {
 }
 
 @media (max-width: 390px) {
-  h1 { font-size: 24px; }
   .header-mark { display: none; }
-  .hero h2 { font-size: 47px; }
   .depth-copy { padding: 55px 28px 62px; }
   .depth h2 { font-size: 42px; }
 }
