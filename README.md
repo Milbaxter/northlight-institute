@@ -1,4 +1,4 @@
-# Northlight Institute of Mental Health
+# Northlight Institute of Human Potential
 
 Current hosting (15 October 2026): **https://80.47.238.111** in the `maximilianlight` UpCloud account. The original gateway is stopped. Agent Room was excluded from the new deployment. The `northlight-server` helper targets this new host using its pinned SSH identity.
 
@@ -51,7 +51,7 @@ Complete the device authorization using your own ChatGPT account. Keep the crede
 
 1. In the [Discord Developer Portal](https://discord.com/developers/applications), create an application named **Stearin** and its bot.
 2. Enable **Message Content Intent**. Enable **Server Members Intent** for member resolution. Generate the bot token and keep it private.
-3. Invite it to **Northlight Institute of Mental Health** using `bot` and `applications.commands` scopes. Grant View Channels, Send Messages, Read Message History, Embed Links, Attach Files, and Send Messages in Threads if needed. Administrator permission is unnecessary.
+3. Invite it to the institute's Discord server using `bot` and `applications.commands` scopes. Grant View Channels, Send Messages, Read Message History, Embed Links, Attach Files, and Send Messages in Threads if needed. Administrator permission is unnecessary.
 4. The setup helper targets the Northlight server configured in this repository.
 5. On the server, run `sudo python3 /opt/northlight/scripts/connect-discord.py`. The helper prints a server-specific bot invitation. It validates the bot token before enabling Discord, and prompts for the token without echoing it.
 6. Mention `@Stearin` in any channel it can see. Ask it to describe the repository, then test a small requested edit and verify the result.
