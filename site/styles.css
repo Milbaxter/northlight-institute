@@ -74,10 +74,10 @@ h1 a { color: inherit; text-decoration: none; }
 }
 
 .hero h2 {
-  max-width: 940px;
-  font-size: clamp(49px, 6.3vw, 84px);
-  line-height: 1.03;
-  letter-spacing: -.055em;
+  max-width: 1000px;
+  font-size: clamp(30px, 3.8vw, 50px);
+  line-height: 1.2;
+  letter-spacing: -.035em;
   text-wrap: balance;
 }
 
@@ -230,7 +230,7 @@ footer a:hover { color: var(--ink); }
   footer { flex-wrap: wrap; }
   footer a { flex-basis: 100%; margin-left: 0; }
   .hero { padding: 82px 0 65px; }
-  .hero h2 { font-size: clamp(42px, 8.5vw, 59px); }
+  .hero h2 { font-size: clamp(27px, 5.1vw, 35px); }
   .northern-light { height: 330px; }
   .pillars { padding: 88px 0 100px; }
   .pillar-grid { grid-template-columns: 1fr; gap: 38px; margin-top: 43px; }
