@@ -106,8 +106,8 @@ h1 a { color: inherit; text-decoration: none; }
 
 .pillar-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 38px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 90px;
   margin-top: 58px;
 }
 
@@ -124,7 +124,7 @@ h1 a { color: inherit; text-decoration: none; }
 }
 
 .pillar-grid p {
-  max-width: 270px;
+  max-width: 380px;
   color: var(--muted);
   font-size: 17px;
   line-height: 1.55;
